@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Crear Familia</title>
+    <link rel="stylesheet" href="{% static "assets/css/creation.css" %}">
+</head>
+<body>
+    <div class="cont"> 
+        <h1>Crear una familia</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ familia_form }}
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>

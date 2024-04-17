@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Familia {{ familia.nombre }}</title>
+  <link rel="stylesheet" href="{% static "assets/css/details.css" %}">
+</head>
+<body>
+  <h1>Familia {{ familia.nombre }}</h1>
+  <div class="datos">
+    <ul>
+      <li><strong>Nombre:</strong> {{ familia.nombre }}</li>
+      <h2>Sociedades asociadas:</h2>
+      {% for sociedad in sociedades %}
+      <li><a href="{% url 'hoja_sociedades' sociedad_id=sociedad.id %}">{{ sociedad.nombre }}</a></li>
+      {% endfor %}
+    </ul>
+    <form method='POST' action="{% url 'familiadel' familia.id %}">
+      {% csrf_token %}
+      <button>Eliminar</button>
+    </form>
+  </div>
+  <div class="formulario">
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+    <form method='POST' action="{% url 'detalles_familia' familia.id %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class='crear'>Actualizar</button>
+    </form>
+  </div>  
+</body>
+</html>

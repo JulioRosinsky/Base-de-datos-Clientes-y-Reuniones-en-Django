@@ -1,0 +1,80 @@
+body{
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+}
+
+h1 {
+    margin: 25px;
+    font-size: 40px;
+    color: #012;
+    
+}
+
+.formulario{
+    width: 500px;
+    border-radius: 3%;
+    border: .1px solid #ccc;
+    padding-right: 25px;
+    padding-left: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-shadow: 10px 20px 30px #ccc;
+    float: right;
+    margin: 20px 100px;
+}
+
+.datos{
+    text-decoration: none;
+    list-style: none;
+    float: left;
+    max-width: 500px;
+    align-content: center;
+}
+
+.datos ul{
+    text-decoration: none;
+    list-style: none;
+}
+
+.datos li{
+    margin: 20px;
+    font-size: 25px;
+}
+
+.datos a{
+    text-decoration: none;
+    color: #012;
+}
+
+input,
+button,
+select,
+textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #012;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #013;
+}
+
+button:focus {
+    outline: none;
+}
+
+@media screen and (max-width: 768px) {
+    .cont {
+        max-width: 90%;
+    }
+}

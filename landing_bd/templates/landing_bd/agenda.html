@@ -1,0 +1,56 @@
+{% extends "landing_bd/index.html" %}
+{% load static %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static "assets/css/landing.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/clientes.css" %}">
+    <title>Agenda</title>
+</head>
+<body>
+    <h1 class="titulo"><center>Agenda</center></h1>
+    <div class="contenedor-formulario">
+        <form class="bar" method="GET" action="{% url 'agenda' %}">
+            <input type="text" name="buscar1" placeholder="Buscar clientes" class="busqueda">
+            <button type="submit" class="boton-busqueda">
+                <img src="https://cdn-icons-png.flaticon.com/512/107/107122.png" alt="Buscar Cliente" class="icono-busqueda">
+            </button>
+        </form>
+    </div>
+    <div class="clientes">
+        <table class="clientes-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Titulo</th>
+                    <th>Cliente</th>
+                    <th>Fecha</th>
+                    <th>Situación</th>
+                    <th>Ejecutivo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reunion in reuniones %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td><a href="{% url 'detalles_reunion' reunion_id=reunion.id %}">{{ reunion.titulo }}</a></td>
+                    <td><b>{{ reunion.cliente }}</b></td>
+                    <td><b>{{ reunion.fecha }}</b></td>
+                    <td>{{ reunion.situacion }}</td>
+                    <td>{{ reunion.ejecutivo}}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">No se encontraron reuniones.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>        
+    <footer>
+        <div class="botones">
+            <button class="crear" onclick="window.location.href = '{% url 'reuniones' %}'">Ir a Reuniones</button>
+        </div>
+    </footer>
+</body>
+{% endblock  %}

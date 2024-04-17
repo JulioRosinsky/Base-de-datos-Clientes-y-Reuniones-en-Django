@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ sociedad.nombre }}</title>
+  <link rel="stylesheet" href="{% static "assets/css/details2.css" %}">
+</head>
+<style>
+    .crear{
+        width:object-fit;
+        max-width:500px;
+    }
+</style>
+<body>
+    <h1>{{ sociedad.nombre }} : Familia {{ sociedad.familia }}</h1>
+    <div class="formulario">
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+        <form method='POST'>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button >Actualizar</button>
+        </form>
+    </div>
+    <form method='POST' action={% url 'eliminar_sociedades' sociedad.id%}>
+        {% csrf_token %}
+      <button class='crear'>Eliminar Sociedad</button>
+    <form>
+</body>
+</html>

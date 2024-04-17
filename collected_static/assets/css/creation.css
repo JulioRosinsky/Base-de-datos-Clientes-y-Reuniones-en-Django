@@ -1,0 +1,54 @@
+.cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10vh auto;
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #fcfafa;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+    max-width: 80%;
+    width: 300px;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #012;
+}
+
+input,
+button,
+select,
+textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #012;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #013;
+}
+
+button:focus {
+    outline: none;
+}
+
+@media screen and (max-width: 768px) {
+    .cont {
+        max-width: 90%;
+    }
+}

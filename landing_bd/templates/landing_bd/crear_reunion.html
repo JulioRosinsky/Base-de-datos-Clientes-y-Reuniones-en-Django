@@ -1,0 +1,19 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Crear Reunion</title>
+    <link rel="stylesheet" href="{% static "assets/css/creation.css" %}">
+</head>
+<body>
+    <div class="cont"> 
+        <h1>Crear una reunion</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ reuniones_form }}
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>

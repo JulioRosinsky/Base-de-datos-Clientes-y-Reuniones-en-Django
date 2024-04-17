@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>DB Investments DB signup </title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'assets/css/signlog_styles.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&family=Rubik:wght@300&display=swap" rel="stylesheet">
+    </head>
+</html>
+<body>
+    <div class="container">
+        <div class="logo">
+        <a href="https://www.bdinvestments.cl/" target="_BLANK">
+            <img src="https://www.bdinvestments.cl/wp-content/uploads/2020/06/logo-personal-footer-1.png" alt="BD Investments Logo" width="150">
+        </a>  
+        </div>
+        <h1>Crea tu cuenta</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Crear tu cuenta">
+        </form>
+        <p>¿Ya tienes una cuenta? <a href="{% url 'login' %}" target="_self">Inicia sesión aquí</a></p>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,54 @@
+{% extends "landing_bd/index.html" %}
+{% load static %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static "assets/css/landing.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/clientes.css" %}">
+    <title>Clientes</title>
+</head>
+<body>
+    <h1 class="titulo"><center>Clientes</center></h1>
+    <div class="contenedor-formulario">
+        <form class="bar" method="GET" action="{% url 'buscar_clientes' %}">
+            <input type="text" name="buscar1" placeholder="Buscar clientes" class="busqueda">
+            <button type="submit" class="boton-busqueda">
+                <img src="https://cdn-icons-png.flaticon.com/512/107/107122.png" alt="Buscar Cliente" class="icono-busqueda">
+            </button>
+        </form>
+    </div>
+    <div class="clientes">
+        <table class="clientes-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Familia</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cliente in clientes %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td><a href="{% url 'detalles_cliente' cliente_id=cliente.id %}">{{ cliente.nombre }}</a></td>
+                    <td>{{ cliente.apellido }}</td>
+                    <td>{{ cliente.familia }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">No se encontraron clientes.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>        
+    <footer>
+        <div class="botones">
+            <button class="crear" onclick="window.location.href = '{% url 'crear_cliente' %}'">Crea un cliente</button>
+            <button class="crear" onclick="window.location.href = '{% url 'exportar_cliente' %}'">Exportar a CSV</button>
+            <button class="crear" onclick="window.location.href = '{% url 'importar_clientes' %}'">Importar</button>
+        </div>
+    </footer>
+</body>
+{% endblock  %}

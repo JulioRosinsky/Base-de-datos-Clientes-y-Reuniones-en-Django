@@ -1,0 +1,35 @@
+{% extends "landing_bd/index.html" %}
+{% load static %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static "assets/css/landing.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/clientes.css" %}">
+    <title>Ejecutivos</title>
+</head>
+<body>
+    <h1 class="titulo"><center>Ejecutivos</center></h1>
+    <div class="clientes">
+        <table class="clientes-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Usuario</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in user %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ user.username }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">No se encontraron usuarios.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>        
+</body>
+{% endblock  %}

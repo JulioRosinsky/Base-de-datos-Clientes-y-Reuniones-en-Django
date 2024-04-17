@@ -1,0 +1,49 @@
+{% extends "landing_bd/index.html" %}
+{% load static %}
+
+{% block content %}
+<head>
+    <link rel="stylesheet" href="{% static "assets/css/landing.css" %}">
+    <link rel="stylesheet" href="{% static "assets/css/clientes.css" %}">
+    <title>Familias</title>
+</head>
+<body>
+    <h1 class="titulo"><center>Familias</center></h1>
+    <div class="contenedor-formulario">
+        <form class="bar" method="GET" action="{% url 'buscar_familia' %}">
+            <input type="text" name="buscar1" placeholder="Buscar familias" class="busqueda">
+            <button type="submit" class="boton-busqueda">
+                <img src="https://cdn-icons-png.flaticon.com/512/107/107122.png" alt="Buscar Cliente" class="icono-busqueda">
+            </button>
+        </form>
+    </div>
+    <div class="clientes">
+        <table class="clientes-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nombre</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for familia in familia %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td><a href="{% url 'detalles_familia' familia_id=familia.id %}">{{ familia.nombre }}</a></td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">No se encontraron familias.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>        
+    <footer>
+        <div class="botones">
+            <button class="crear" onclick="window.location.href = '{% url 'crear_familia' %}'">Crea una familia</button>
+            <button class="crear" onclick="window.location.href = '{% url 'crear_sociedades' %}'">Crea una Sociedad</button>
+        </div>
+    </footer>
+</body>
+{% endblock  %}

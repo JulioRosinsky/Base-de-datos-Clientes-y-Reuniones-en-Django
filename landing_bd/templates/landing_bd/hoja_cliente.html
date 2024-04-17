@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hoja de {{ cliente.nombre }} {{cliente.apellido}}</title>
+  <link rel="stylesheet" href="{% static "assets/css/details.css" %}">
+</head>
+<body>
+  <h1>Hoja de {{ cliente.nombre }} {{cliente.apellido}}</h1>
+  <div class="datos">
+    <ul>
+      <li><strong>Nombre:</strong> {{ cliente.nombre }}</li>
+      <li><strong>Apellido:</strong> {{ cliente.apellido }}</li>
+      <li><strong>Familia:</strong> {{ cliente.familia }}</li>
+      <li><strong>Ejecutivo:</strong> {{ cliente.ejecutivo }}</li>
+      <li><strong>Fecha de Nacimiento:</strong> {{ cliente.fecha_de_nacimiento }}</li>
+      <li><strong>Dirección:</strong> {{ cliente.direcion }}</li>
+      <li><strong>Activo:</strong> {{ cliente.activo }}</li>
+      <li><strong>Relevancia:</strong> {{ cliente.relevancia }}</li>
+    </ul>
+    <form method='POST' action={% url 'clientesdel' cliente.id %}>
+      {% csrf_token %}
+      <button>
+        Eliminar
+      </button>
+    </form>
+  </div>
+  <div class="formulario">
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+    <form method='POST'>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class='crear'>Actualizar</button>
+    </form>
+  </div>
+</body>
+</html>

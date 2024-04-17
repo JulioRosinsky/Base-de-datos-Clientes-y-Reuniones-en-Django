@@ -1,0 +1,61 @@
+body{
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+}
+
+h1 {
+    margin: 25px;
+    font-size: 40px;
+    color: #012;
+    
+}
+
+.formulario{
+    width: 500px;
+    border-radius: 3%;
+    border: .1px solid #ccc;
+    padding-right: 25px;
+    padding-left: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-shadow: 10px 20px 30px #ccc;
+    margin:  50px auto;
+}
+
+input,
+button,
+select,
+textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #012;
+    color: #fff;
+    cursor: pointer;
+}
+
+.crear{
+    margin-left: 425px;
+    margin-right: 425px;
+}
+
+button:hover {
+    background-color: #013;
+}
+
+button:focus {
+    outline: none;
+}
+
+@media screen and (max-width: 768px) {
+    .cont {
+        max-width: 90%;
+    }
+}

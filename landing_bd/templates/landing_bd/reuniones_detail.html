@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hoja de {{ reunion.titulo }}/{{ reunion.fecha }}</title>
+  <link rel="stylesheet" href="{% static "assets/css/details.css" %}">
+</head>
+<body>
+  <h1>Hoja de {{ reunion.titulo }}/{{ reunion.fecha }}</h1>
+  <div class="datos">
+    <ul>
+      <li><strong>Título:</strong> {{ reunion.titulo }}</li>
+      <li><strong>Fecha:</strong> {{ reunion.fecha }}</li>
+      <li><strong>Situación:</strong> {{ reunion.situacion }}</li>
+      <li><strong>Ejecutivo:</strong> {{ reunion.ejecutivo }}</li>
+      <li><strong>Cliente:</strong> {{ reunion.cliente }}</li>
+      <li><strong>Comentario:</strong> {{ reunion.comentario }}</li>
+      {% if reunion.archivo %}
+      <li>
+        <strong>Archivo:</strong>
+        <a href="{{ reunion.archivo.url }}" target="_BLANK">
+          <i class="fa fa-file-pdf"></i>
+          {{ reunion.archivo.name|truncatechars:30 }}
+        </a>
+      </li>
+      {% endif %}
+    </ul>
+    <form method='POST' action={% url 'eliminar_reunion' reunion.id %}>
+      {% csrf_token %}
+      <button>
+        Eliminar
+      </button>
+    </form>
+  </div>
+  <div class="formulario" action={% url 'detalles_reunion' reunion.id%}>
+    {% if error %}
+    {{ error }}
+    {% endif %}
+  <form method='POST' enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+    <button class='crear'>Actualizar</button>
+  </form>
+  </div>
+</body>
+</html>

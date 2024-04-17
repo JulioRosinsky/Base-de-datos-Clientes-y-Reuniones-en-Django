@@ -1,0 +1,75 @@
+.clientes {
+    margin: 25px auto;
+    margin-bottom: 70px;
+    width: 90%;
+}
+
+.clientes-table {
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 5px 5px 20px #dbe2e6;
+}
+
+.clientes-table th,
+.clientes-table td {
+    border: 1px solid #dddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.clientes-table td a {
+    text-decoration: none;
+    overflow: hidden;
+    color: #000;
+}
+
+.clientes-table th {
+    background-color: #f2f2f2;
+}
+
+.clientes-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.clientes-table tr:hover {
+    background-color: #ddd;
+}
+
+.contenedor-formulario {
+    width: 90%;
+    margin: 0 auto; 
+}
+
+
+.bar {
+    display: flex;
+    justify-content: center; 
+    margin-bottom: 20px; 
+}
+
+.busqueda {
+    width: calc(100% - 50px);
+    padding: 10px;
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    margin-right: 10px; 
+}
+
+.boton-busqueda {
+    border: none; 
+    background: none; 
+    cursor: pointer; 
+}
+
+.icono-busqueda {
+    width: 24px;
+    height: 24px;
+}
+
+.clientes {
+    margin-top: 20px; 
+}
+
+
