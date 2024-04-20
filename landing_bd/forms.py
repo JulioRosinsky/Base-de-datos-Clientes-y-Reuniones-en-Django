@@ -25,14 +25,9 @@ class ReunionesForm(ModelForm):
             'ejecutivo',
             'cliente',
             'comentario',
+            'archivo',
         ]
         
-        
-class ArchivoForm(ModelForm):
-    class Meta:
-        model = Archivo
-        fields = ['archivo']
-                
 class FamiliaForm(ModelForm):
     class Meta:
         model = Familia

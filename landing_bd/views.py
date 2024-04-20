@@ -134,21 +134,15 @@ def eliminar_sociedades(request, sociedad_id):
 def crear_reuniones(request):
     if request.method == 'GET':
         reuniones_form = ReunionesForm()
-        archivo_form = ArchivoForm()
-        return render(request, 'landing_bd/crear_reunion.html', {'reuniones_form': reuniones_form, 'archivo_form': archivo_form})
+        return render(request, 'landing_bd/crear_reunion.html', {'reuniones_form': reuniones_form})
     elif request.method == 'POST':
-        reuniones_form = ReunionesForm(request.POST)
-        archivo_form = ArchivoForm(request.POST, request.FILES)
-        if reuniones_form.is_valid() and archivo_form.is_valid():
-            reunion = reuniones_form.save()
-            archivo = archivo_form.save(commit=False)
-            archivo.reunion = reunion
-            archivo.save()
+        reuniones_form = ReunionesForm(request.POST, request.FILES)
+        if reuniones_form.is_valid():
+            reuniones_form.save()
             return redirect('reuniones')
         else:
             error = "Error: El formulario no es válido. Por favor, revise los errores."
-            return render(request, 'landing_bd/crear_reunion.html', {'reuniones_form': reuniones_form, 'archivo_form': archivo_form, 'error': error})
-
+            return render(request, 'landing_bd/crear_reunion.html', {'reuniones_form': reuniones_form, 'error': error})
 
 @login_required           
 def eliminar_cliente(request, cliente_id):
@@ -238,7 +232,7 @@ def detalles_reuniones(request, reunion_id):
             if 'archivo' in request.FILES:
                 archivo = request.FILES['archivo']
                 print(archivo)
-            form.save(f"{reunion.id}_{archivo.name}")
+            form.save(f"{reunion.id}")
             return redirect('reuniones')
             
         else:
@@ -290,7 +284,6 @@ def importar_cliente(request):
         if file_format == 'CSV':
             imported_data = dataset.load(new_employees.read().decode('utf-8'),format='csv')
             result = employee_resource.import_data(dataset, dry_run=True)                                                                 
-        
         elif file_format == 'XLSX':
             imported_data = dataset.load(new_employees.read().decode('utf-8'),format='xlsx')
             result = employee_resource.import_data(dataset, dry_run=True) 
