@@ -28,7 +28,11 @@ class Cliente(models.Model):
 
     def __str__(self):
         return f"{self.nombre} {self.apellido}"
-  
+
+class Archivo(models.Model):
+    archivo = models.FileField(upload_to='media/archivos/')
+    reunion = models.ForeignKey('Reuniones', on_delete=models.CASCADE, related_name='archivos')
+
 class Reuniones(models.Model):
     titulo = models.CharField(max_length=50)
     fecha = models.DateField(auto_now=False, auto_now_add=False, default="0000-00-00")
@@ -36,7 +40,6 @@ class Reuniones(models.Model):
     ejecutivo = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reunion_ejecutivo')
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, related_name='reunion_cliente')
     comentario = models.TextField(null=True)
-    archivo = models.FileField(null=True, blank=True, upload_to='media/archivos/')
     
     def __str__(self):
         return f'{self.titulo} {self.cliente} / {self.fecha}'
