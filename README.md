@@ -23,6 +23,3 @@ Este proyecto se considera finalizado y estable. Se han implementado las funcion
 
 ## Estado del Proyecto
 Este proyecto ya fue finalizado
-
-## Licencia
-Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
