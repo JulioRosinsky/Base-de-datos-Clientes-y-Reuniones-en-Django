@@ -17,6 +17,9 @@ CACHES = {
 ALLOWED_HOSTS = []
 
 
+SESSION_COOKIE_AGE = 170000
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
 from import_export.formats.base_formats import CSV, XLSX
 IMPORT_FORMATS = [CSV, XLSX]
 EXPORT_FORMATS = [XLSX, CSV]

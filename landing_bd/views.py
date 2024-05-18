@@ -259,6 +259,7 @@ def detalles_familia(request, familia_id):
         
 from .resources import ClienteResource, ReunionesResource
 
+@login_required
 def exportar_clientes(request):
     cliente_resource = ClienteResource()
     dataset = cliente_resource.export()
@@ -266,6 +267,7 @@ def exportar_clientes(request):
     response['Content-Disposition'] = 'attachment; filename="clientes.csv"'
     return response
 
+@login_required
 def exportar_reuniones(request):
     reuniones_resource = ReunionesResource()
     dataset = reuniones_resource.export()
@@ -274,6 +276,7 @@ def exportar_reuniones(request):
     return response
 
 from tablib import Dataset
+@login_required
 def importar_cliente(request):
     if request.method == 'POST':
         file_format = request.POST['file-format']
